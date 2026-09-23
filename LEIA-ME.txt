@@ -1,0 +1,30 @@
+OS CÓDIGOS SECRETOS DE ISRAEL — PACOTE PARA NETLIFY
+
+COMO PUBLICAR
+
+1. Acesse https://app.netlify.com/drop
+2. Entre na sua conta do Netlify.
+3. Arraste esta pasta inteira para a área de upload.
+4. Aguarde o envio. O Netlify criará um endereço público automaticamente.
+
+IMPORTANTE
+
+- Não é necessário instalar programas ou executar comandos.
+- Envie a pasta inteira, mantendo index.html, assets, images e video juntos.
+- A abertura com vídeo, mensagem de impacto e zoom suave está incluída.
+- O Tour Imersivo de Jerusalém, Mar Morto e Galileia está incluído e utiliza
+  panoramas licenciados com os créditos exibidos na própria página.
+- Os panoramas do tour são carregados pela internet a partir do Wikimedia
+  Commons; as demais imagens e o vídeo estão dentro desta pasta.
+- A abertura é mostrada uma vez por sessão do navegador. Para testá-la novamente,
+  abra o site em uma janela anônima ou feche e reabra o navegador.
+- O botão final abre o aplicativo de e-mail do visitante. O destinatário pode ser
+  configurado depois, quando o e-mail comercial estiver definido.
+
+CONTEÚDO DO PACOTE
+
+- index.html: página principal
+- assets/: estilos e funcionamento da página
+- images/: imagens usadas na landing page
+- video/: vídeo e imagem de capa da abertura
+- _headers e _redirects: configurações para o Netlify

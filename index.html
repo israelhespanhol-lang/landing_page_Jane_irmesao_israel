@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#061a2a" />
+    <meta name="description" content="Imersão Os Códigos Secretos de Israel com a Dra. Jane Krüger." />
+    <link rel="icon" type="image/png" sizes="512x512" href="/favicon-ultravel.png" />
+    <title>Os Códigos Secretos de Israel</title>
+    <script type="module" crossorigin src="/assets/index-BSW1Is6G.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-CFlfX2-E.css">
+  </head>
+  <body>
+    <div id="root"></div>
+    <style>
+      .tourSecretGuide {
+        position: absolute;
+        z-index: 60;
+        top: 68px;
+        left: 50%;
+        width: min(430px, calc(100% - 42px));
+        transform: translateX(-50%);
+        pointer-events: none;
+        text-align: center;
+      }
+      .tourSecretGuide__card {
+        color: #fffdf7;
+        background: linear-gradient(135deg, rgba(5, 27, 41, .96), rgba(16, 49, 67, .96));
+        border: 1px solid #ead7a3;
+        box-shadow: 0 10px 35px rgba(0, 0, 0, .35), 0 0 0 6px rgba(199, 162, 87, .13);
+        padding: 13px 20px 12px;
+      }
+      .tourSecretGuide small {
+        display: block;
+        color: #ead7a3;
+        font: 700 9px/1 Arial, sans-serif;
+        letter-spacing: .22em;
+      }
+      .tourSecretGuide strong {
+        display: block;
+        margin-top: 7px;
+        font: 600 15px/1.25 Georgia, serif;
+      }
+      .tourSecretGuide b {
+        display: inline-block;
+        margin-top: 7px;
+        color: #ead7a3;
+        font-size: 24px;
+        line-height: 12px;
+        animation: secretGuidePulse 1.2s ease-in-out infinite;
+      }
+      .pnlm-hotspot-base.pnlm-info {
+        visibility: visible !important;
+        filter: drop-shadow(0 0 9px rgba(234, 215, 163, .95));
+      }
+      /* A revelação deve ficar limpa para não competir com a mensagem. */
+      .revelationLight { display: none !important; }
+      @keyframes secretGuidePulse { 50% { transform: translateY(7px); opacity: .55; } }
+      @media (max-width: 640px) {
+        .tourSecretGuide { top: 72px; width: min(355px, calc(100% - 28px)); }
+        .tourSecretGuide__card { padding: 11px 15px 9px; }
+        .tourSecretGuide strong { font-size: 13px; }
+      }
+    </style>
+    <script>
+      /* Tenta iniciar a mesma trilha já na abertura. Alguns navegadores só
+         liberam áudio após uma interação; nesse caso, o primeiro toque, clique
+         ou tecla inicia a música sem exigir um botão adicional. */
+      (() => {
+        let started = false;
+        const startMusic = () => {
+          const audio = document.querySelector('audio[src="/audio/trilha-israel.mp3"]');
+          if (!audio || started) return;
+          audio.volume = 0.28;
+          audio.play().then(() => {
+            started = true;
+          }).catch(() => {});
+        };
+        const tryUntilReady = window.setInterval(() => {
+          startMusic();
+          if (started) window.clearInterval(tryUntilReady);
+        }, 250);
+        window.setTimeout(() => window.clearInterval(tryUntilReady), 12000);
+        ['pointerdown', 'touchstart', 'keydown'].forEach((eventName) => {
+          window.addEventListener(eventName, startMusic, { once: true, passive: true });
+        });
+        window.addEventListener('load', startMusic, { once: true });
+      })();
+    </script>
+    <script>
+      /* Guia visual do tour: deixa claro que os pontos da imagem liberam os códigos. */
+      (() => {
+        const installGuide = () => {
+          document.querySelectorAll('.tourStage').forEach((stage) => {
+            if (stage.querySelector('.tourSecretGuide')) return;
+            const guide = document.createElement('div');
+            guide.className = 'tourSecretGuide';
+            guide.setAttribute('aria-hidden', 'true');
+            guide.innerHTML = '<div class="tourSecretGuide__card"><small>✦ DESCUBRA OS CÓDIGOS SECRETOS ✦</small><strong>Clique nos pontos luminosos da paisagem para liberar cada código</strong><b>↓</b></div>';
+            stage.appendChild(guide);
+          });
+        };
+        const observer = new MutationObserver(installGuide);
+        observer.observe(document.documentElement, { childList: true, subtree: true });
+        installGuide();
+      })();
+    </script>
+  </body>
+</html>
