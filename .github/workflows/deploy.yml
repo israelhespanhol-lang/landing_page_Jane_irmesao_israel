@@ -20,4 +20,4 @@ jobs:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: jane.grupos-ultravel.com/janegrupos/
+          server-dir: ./
